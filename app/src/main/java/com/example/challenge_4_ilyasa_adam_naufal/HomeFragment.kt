@@ -1,11 +1,11 @@
 package com.example.challenge_4_ilyasa_adam_naufal
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +26,7 @@ class HomeFragment : Fragment() {
 		// Inflate the layout for this fragment
 		_binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+		catView()
 		setupRecyclerView(isGrid)
 		setupChangeLayout()
 		return binding.root
@@ -35,8 +36,8 @@ class HomeFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		catView()
-		listView()
 
+		pickItem()
 	}
 
 	// List Kategori
@@ -58,35 +59,32 @@ class HomeFragment : Fragment() {
 		ItemMenu("Chicken Satay", "Rp 30.000", R.drawable.foodiesfeed_com_grilling_chicken_satay)
 	)
 
-	private fun setupRecyclerView(){
+	private fun setupRecyclerView(isGrid: Boolean) {
 		binding.recycleviewVertical.adapter = MenuAdapter(listMenu)
 		if (isGrid) {
 			binding.recycleviewVertical.layoutManager = LinearLayoutManager(requireActivity())
-		} else {
-			binding.recycleviewVertical.layoutManager = GridLayoutManager(requireActivity(), 2)
-		}
-	}
-
-private fun setupChangeLayout (){
-	binding.gridlist.setOnClickListener {
-		if (layoutManager is LinearLayoutManager) {
 			binding.gridlist.setImageDrawable(
 				ContextCompat.getDrawable(
 					requireActivity(), R.drawable.baseline_view_list_24
 				)
 			)
-
 		} else {
+			binding.recycleviewVertical.layoutManager = GridLayoutManager(requireActivity(), 2)
 			binding.gridlist.setImageDrawable(
 				ContextCompat.getDrawable(
 					requireActivity(), R.drawable.baseline_grid_view_24
 				)
 			)
+		}
+	}
+
+	private fun setupChangeLayout() {
+		binding.gridlist.setOnClickListener {
+			isGrid = !isGrid
+			setupRecyclerView(isGrid)
 
 		}
-		pickItem()
 	}
-}
 
 
 	// RecycleViewCategory
