@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_fragmentAddItem"
+            app:destination="@id/fragmentAddItem" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddItem"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.FragmentAddItem"
+        android:label="fragment_add_item"
+        tools:layout="@layout/fragment_add_item" >
+        <argument
+            android:name="nameadd"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="Data can't be Empty" />
+        <argument
+            android:name="imageadd"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="priceadd"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="Data can't be Empty" />
+    </fragment>
+    <fragment
+        android:id="@+id/cart2"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.Cart"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/profile2"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
