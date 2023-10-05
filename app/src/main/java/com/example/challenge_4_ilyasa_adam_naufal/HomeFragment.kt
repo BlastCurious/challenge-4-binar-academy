@@ -6,18 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentHomeBinding
 
+
 class HomeFragment : Fragment() {
 
 	/*private lateinit var sharedPreferences : SharedPreferences
 	private val sharedPrefName = "sharedpreflayout"*/
-	private var isGrid = true
+
+	private lateinit var homeViewModel: HomeViewModel
 	private var _binding: FragmentHomeBinding? = null
 	private val binding get() = _binding!!
+	private var isGrid: Boolean = true
+	private var layoutType = true
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -25,10 +30,16 @@ class HomeFragment : Fragment() {
 	): View {
 		// Inflate the layout for this fragment
 		_binding = FragmentHomeBinding.inflate(inflater, container, false)
+		homeViewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
 
+		homeViewModel.isListView.observe(viewLifecycleOwner) {
+			isGrid = it
+			setupChangeLayout()
+			setupRecyclerView(it)
+			pickItem()
+		}
 		catView()
 		setupRecyclerView(isGrid)
-		setupChangeLayout()
 		return binding.root
 
 	}
@@ -60,30 +71,43 @@ class HomeFragment : Fragment() {
 	)
 
 	private fun setupRecyclerView(isGrid: Boolean) {
-		binding.recycleviewVertical.adapter = MenuAdapter(listMenu)
+
 		if (isGrid) {
 			binding.recycleviewVertical.layoutManager = LinearLayoutManager(requireActivity())
-			binding.gridlist.setImageDrawable(
-				ContextCompat.getDrawable(
-					requireActivity(), R.drawable.baseline_view_list_24
-				)
-			)
-		} else {
-			binding.recycleviewVertical.layoutManager = GridLayoutManager(requireActivity(), 2)
+			binding.recycleviewVertical.adapter = MenuAdapter(listMenu, gridType = true)
 			binding.gridlist.setImageDrawable(
 				ContextCompat.getDrawable(
 					requireActivity(), R.drawable.baseline_grid_view_24
 				)
 			)
+		} else {
+			binding.recycleviewVertical.layoutManager = GridLayoutManager(requireActivity(), 2)
+			binding.recycleviewVertical.adapter = MenuAdapter(listMenu, gridType = false)
+			binding.gridlist.setImageDrawable(
+				ContextCompat.getDrawable(
+					requireActivity(), R.drawable.baseline_view_list_24
+				)
+			)
 		}
+
 	}
 
 	private fun setupChangeLayout() {
-		binding.gridlist.setOnClickListener {
-			isGrid = !isGrid
-			setupRecyclerView(isGrid)
 
+		val currentLayout = homeViewModel.isListView.value
+
+		binding.gridlist.setOnClickListener {
+			isGrid=!isGrid
+
+			setupRecyclerView(isGrid)
+			val newLayoutValue = !currentLayout!!
+			setupRecyclerView(newLayoutValue)
+
+			homeViewModel.isListView.value = newLayoutValue
+			pickItem()
 		}
+
+
 	}
 
 
@@ -95,7 +119,14 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun pickItem() {
-		val adapter = MenuAdapter(listMenu, onItemClick = { selectedItem ->
+		if(isGrid){
+
+			layoutType = true
+		} else {
+
+			layoutType = false
+		}
+		val adapter = MenuAdapter(listMenu, gridType = layoutType, onItemClick = { selectedItem ->
 
 			val actionToDetailFragment =
 				HomeFragmentDirections.actionHomeFragmentToDetailItem()

@@ -9,14 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MenuAdapter(
 	private val listmenu: ArrayList<ItemMenu>,
+	private val gridType: Boolean = true,
 	var onItemClick: ((ItemMenu) -> Unit)? = null
 ) :
 	RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
 
 	// Membuat Holder
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-		val view = LayoutInflater.from(parent.context)
-			.inflate(R.layout.list_item_menu, parent, false)
+		val layoutResId = if(gridType) R.layout.list_item_menu else R.layout.grid_item_menu
+		val view : View = LayoutInflater.from(parent.context).inflate(layoutResId,parent,false)
 		return ViewHolder(view)
 
 	}

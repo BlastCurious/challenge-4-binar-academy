@@ -12,7 +12,6 @@ import android.widget.Toast
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentDetailItemBinding
 
 class DetailItem: Fragment() {
-	// TODO: Rename and change types of parameters
 	private var _binding: FragmentDetailItemBinding? = null
 	private val binding get() = _binding!!
 
@@ -31,7 +30,7 @@ class DetailItem: Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 
 		try  {
-			val data = FragmentDetailItemBindingArgs.fromBundle(arguments as Bundle)
+			val data = DetailItemArgs.fromBundle(arguments as Bundle)
 
 			binding.nameadd.text = data.nameadd
 			binding.priceadd.text = data.priceadd
