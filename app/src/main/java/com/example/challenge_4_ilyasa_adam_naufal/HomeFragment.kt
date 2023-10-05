@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
 	}
 
 	// List Kategori
-	private val listKategori = arrayListOf<Category>(
+	private val listKategori = arrayListOf(
 		Category("Drink", R.drawable.foodiesfeed_com_strawberry_milk_splash),
 		Category("Fast Food", R.drawable.foodiesfeed_com_fried_chicken_commercial),
 		Category("Western", R.drawable.foodiesfeed_com_french_fries_with_ketchup_top_view),
@@ -98,7 +98,7 @@ class HomeFragment : Fragment() {
 		val adapter = MenuAdapter(listMenu, onItemClick = { selectedItem ->
 
 			val actionToDetailFragment =
-				HomeFragmentDirections.actionHomeFragmentToFragmentAddItem()
+				HomeFragmentDirections.actionHomeFragmentToDetailItem()
 			actionToDetailFragment.nameadd = selectedItem.name
 			actionToDetailFragment.priceadd = selectedItem.price
 			actionToDetailFragment.imageadd = selectedItem.images

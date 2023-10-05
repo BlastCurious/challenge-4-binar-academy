@@ -68,7 +68,7 @@
                     android:layout_marginStart="20dp"
                     android:contentDescription="@string/discount_picture"
                     android:scaleType="fitXY"
-                    android:src="@drawable/_2751000_6688233"
+                    android:src="@drawable/discount_30_percent"
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView

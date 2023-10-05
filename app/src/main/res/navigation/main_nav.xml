@@ -10,37 +10,27 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_fragmentAddItem"
-            app:destination="@id/fragmentAddItem" />
+            android:id="@+id/action_homeFragment_to_detailItem"
+            app:destination="@id/detailItem" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentAddItem"
-        android:name="com.example.challenge_4_ilyasa_adam_naufal.FragmentAddItem"
-        android:label="fragment_add_item"
-        tools:layout="@layout/fragment_add_item" >
+        android:id="@+id/detailItem"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.DetailItem"
+        android:label="fragment_detail_item"
+        tools:layout="@layout/fragment_detail_item" >
         <argument
             android:name="nameadd"
             app:argType="string"
             app:nullable="true"
-            android:defaultValue="Data can't be Empty" />
-        <argument
-            android:name="imageadd"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="Data can't empty" />
         <argument
             android:name="priceadd"
             app:argType="string"
             app:nullable="true"
-            android:defaultValue="Data can't be Empty" />
+            android:defaultValue="Data can't be empty" />
+        <argument
+            android:name="imageadd"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
-    <fragment
-        android:id="@+id/cart2"
-        android:name="com.example.challenge_4_ilyasa_adam_naufal.Cart"
-        android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
-    <fragment
-        android:id="@+id/profile2"
-        android:name="com.example.challenge_4_ilyasa_adam_naufal.Profile"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
 </navigation>

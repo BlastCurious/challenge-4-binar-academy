@@ -9,11 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentAddItemBinding
+import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentDetailItemBinding
 
-class FragmentAddItem: Fragment() {
+class DetailItem: Fragment() {
 	// TODO: Rename and change types of parameters
-	private var _binding: FragmentAddItemBinding? = null
+	private var _binding: FragmentDetailItemBinding? = null
 	private val binding get() = _binding!!
 
 	private val locationUri: String = "https://maps.app.goo.gl/SiFzf18kByYndQqg7"
@@ -21,8 +21,8 @@ class FragmentAddItem: Fragment() {
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
-	): View? {
-		_binding = FragmentAddItemBinding.inflate(inflater, container, false)
+	): View {
+		_binding = FragmentDetailItemBinding.inflate(inflater, container, false)
 
 		return binding.root
 	}
@@ -31,7 +31,7 @@ class FragmentAddItem: Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 
 		try  {
-			val data = FragmentAddItemArgs.fromBundle(arguments as Bundle)
+			val data = FragmentDetailItemBindingArgs.fromBundle(arguments as Bundle)
 
 			binding.nameadd.text = data.nameadd
 			binding.priceadd.text = data.priceadd
