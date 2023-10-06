@@ -3,6 +3,7 @@ plugins {
 	id("org.jetbrains.kotlin.android")
 	id("androidx.navigation.safeargs")
 	id("kotlin-kapt")
+	id("kotlin-parcelize")
 }
 
 android {
@@ -60,6 +61,7 @@ dependencies {
 
 	//LiveData
 	implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+	implementation ("androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.2")
 
 	//Database
 	implementation("androidx.room:room-runtime:2.5.2")

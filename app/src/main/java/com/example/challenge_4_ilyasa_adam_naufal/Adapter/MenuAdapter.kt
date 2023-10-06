@@ -1,15 +1,18 @@
-package com.example.challenge_4_ilyasa_adam_naufal
+package com.example.challenge_4_ilyasa_adam_naufal.Adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.challenge_4_ilyasa_adam_naufal.DataClass.ItemMenu
+import com.example.challenge_4_ilyasa_adam_naufal.R
 
 class MenuAdapter(
 	private val listmenu: ArrayList<ItemMenu>,
-	private val gridType: Boolean = true,
+	var gridType: Boolean = true,
 	var onItemClick: ((ItemMenu) -> Unit)? = null
 ) :
 	RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
@@ -25,7 +28,7 @@ class MenuAdapter(
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 		val (name, price, image) = listmenu[position]
 		holder.name.text = name
-		holder.price.text = price
+		holder.price.text = price.toString()
 		holder.image.setImageResource(image)
 
 		val currentItem = listmenu[position]
@@ -44,5 +47,12 @@ class MenuAdapter(
 		val name = itemView.findViewById<TextView>(R.id.title_menu)!!
 		val price = itemView.findViewById<TextView>(R.id.price_menu)!!
 		val image = itemView.findViewById<ImageView>(R.id.image_menu)!!
+
+	}
+
+	@SuppressLint("NotifyDataSetChanged")
+	fun reloadData(newData: ArrayList<ItemMenu>) {
+		listmenu.addAll(newData)
+		notifyDataSetChanged()
 	}
 }

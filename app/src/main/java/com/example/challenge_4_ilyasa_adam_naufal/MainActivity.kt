@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.ActivityMainBinding
-
+import com.example.challenge_4_ilyasa_adam_naufal.Fragment.CartFragment
+import com.example.challenge_4_ilyasa_adam_naufal.Fragment.HistoryFragment
+import com.example.challenge_4_ilyasa_adam_naufal.Fragment.HomeFragment
+import com.example.challenge_4_ilyasa_adam_naufal.Fragment.ProfileFragment
 class MainActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityMainBinding
@@ -13,9 +16,11 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
-		replaceFragment(HomeFragment())
+	}
+}
+		/*replaceFragment(HomeFragment())*/
 
-		binding.bottomNavBar.setOnItemSelectedListener {
+		/*binding.bottomNavBar.setOnItemSelectedListener {
 
 			when (it.itemId) {
 
@@ -26,24 +31,10 @@ class MainActivity : AppCompatActivity() {
 
 				else -> {
 
-
 				}
 
 			}
 
-			true
+		true
 
-		}
-
-
-	}
-
-	private fun replaceFragment(fragment: Fragment) {
-
-		val fragmentManager = supportFragmentManager
-		val fragmentTransaction = fragmentManager.beginTransaction()
-		fragmentTransaction.replace(R.id.navContainer, fragment)
-		fragmentTransaction.commit()
-
-	}
-}
+		}*/
