@@ -70,7 +70,8 @@
                 app:cornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_delivery"
-                tools:text="Ambil Sendiri" />
+                android:text="@string/ambil_sendiri"
+                />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDelivery"
@@ -78,9 +79,10 @@
                 android:layout_height="50dp"
                 android:layout_marginEnd="10dp"
                 app:cornerRadius="10dp"
+                android:text="@string/delivery"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_delivery"
-                tools:text="Dikirim" />
+                     />
 
             <View
                 android:id="@+id/view2"
@@ -144,7 +146,7 @@
                 app:cornerRadius="10dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/payment"
-                tools:text="Tunai" />
+                android:text="@string/cash" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEwallet"
@@ -154,7 +156,7 @@
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/payment"
-                tools:text="Dompet Digital" />
+                android:text="@string/e_wallet" />
 
             <View
                 android:id="@+id/view4"
