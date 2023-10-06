@@ -22,5 +22,12 @@
     <string name="password">Password</string>
     <string name="invisible">invisible</string>
     <string name="tittle">Tittle</string>
+    <string name="cart">Cart</string>
+
     <string name="pesan" />
+    <string name="ringkasan_pembayaran">Ringkasan Pembayaran</string>
+    <string name="metode_pengiriman">Metode Pengiriman</string>
+    <string name="confirm_order">Confirm Order</string>
+    <string name="metode_pembayaran">Metode Pembayaran</string>
+    <string name="pesan2">Pesan</string>
 </resources>
