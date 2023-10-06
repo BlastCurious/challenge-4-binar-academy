@@ -12,22 +12,16 @@ data class Cart (
     @PrimaryKey(autoGenerate = true)
     var id: Long = 0,
     @ColumnInfo(name = "food_name")
-    var foodName: String,
+    var itemName: String,
     @ColumnInfo(name = "img_Id")
     var imgId: Int,
     @ColumnInfo(name ="food_Price")
     var priceMenu: Int,
     @ColumnInfo(name = "food_Quantity")
-    var foodQuantity: Int,
+    var itemQuantity: Int,
     @ColumnInfo(name = "total_Price")
     var totalPrice: Int,
     @ColumnInfo(name = "food_Note")
-    var foodNote: String? = null
+    var itemNote: String? = null
 
 ):Parcelable
-{
-
-    companion object {
-        const val TABLE_NAME = "cart_menu"
-    }
-}

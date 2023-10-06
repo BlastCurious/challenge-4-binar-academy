@@ -52,13 +52,6 @@ class DetailItemFragment: Fragment() {
 			btnBack()
 			wViewModel()
 
-			/*val data = DetailItemArgs.fromBundle(arguments as Bundle)
-
-			binding.nameadd.text = data.nameadd
-			binding.priceadd.text = data.priceadd
-			binding.imageadd.setImageResource(data.imageadd)*/
-
-
 			binding.location.setOnClickListener {
 				try {
 					val intent = Intent(Intent.ACTION_VIEW, Uri.parse(locationUri))

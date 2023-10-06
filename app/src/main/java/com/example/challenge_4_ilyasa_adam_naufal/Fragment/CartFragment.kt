@@ -1,14 +1,15 @@
 package com.example.challenge_4_ilyasa_adam_naufal.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge_4_ilyasa_adam_naufal.Adapter.CartAdapter
-import com.example.challenge_4_ilyasa_adam_naufal.DataClass.ItemMenu
+import com.example.challenge_4_ilyasa_adam_naufal.R
 import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.CartViewModel
 import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.ViewModelFactory
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentCartBinding
@@ -18,13 +19,12 @@ class CartFragment : Fragment() {
 	private lateinit var binding: FragmentCartBinding
 	private lateinit var cartViewModel: CartViewModel
 	private lateinit var cartAdapter: CartAdapter
-	private var item: ItemMenu? = null
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
 		savedInstanceState: Bundle?
-	): View? {
-		binding =FragmentCartBinding.inflate(inflater, container, false)
+	): View {
+		binding = FragmentCartBinding.inflate(inflater, container, false)
 		setUpCartViewModel()
 
 		cartAdapter = CartAdapter(cartViewModel)
@@ -35,14 +35,14 @@ class CartFragment : Fragment() {
 		cartViewModel.allCartItems.observe(viewLifecycleOwner) {
 			cartAdapter.setData(it)
 
-			var total_price = 0
-			it.forEach{item ->
-					total_price += item.totalPrice
-				}
-				val priceText = "Rp. $total_price"
-				binding.resultTotalPrice.text = priceText
+			var totalprice = 0
+			it.forEach { item ->
+				totalprice += item.totalPrice
 			}
-
+			val priceText = "Rp. $totalprice"
+			binding.resultTotalPrice.text = priceText
+		}
+		addToSummary()
 		return binding.root
 	}
 
@@ -51,4 +51,11 @@ class CartFragment : Fragment() {
 		cartViewModel = ViewModelProvider(this, viewModelFactory)[CartViewModel::class.java]
 	}
 
+	private fun addToSummary() {
+		binding.btnPesan.setOnClickListener {
+			findNavController().navigate(
+				R.id.action_cartFragment_to_confirmOrderFragment
+			)
+		}
+	}
 }

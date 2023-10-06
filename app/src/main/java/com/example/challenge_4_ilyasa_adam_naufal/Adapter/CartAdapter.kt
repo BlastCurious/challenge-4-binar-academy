@@ -33,10 +33,10 @@ private val cartViewModel: CartViewModel
 		RecyclerView.ViewHolder(binding.root) {
 
 		fun bind(cartItem: Cart, viewModel: CartViewModel) {
-			binding.tvDesc.text = cartItem.foodName
+			binding.tvDesc.text = cartItem.itemName
 			binding.image.setImageResource(cartItem.imgId)
 			binding.tvPrice.text = cartItem.priceMenu.toString()
-			binding.tvNumber.text = cartItem.foodQuantity.toString()
+			binding.tvNumber.text = cartItem.itemQuantity.toString()
 
 			binding.delete.setOnClickListener {
 			viewModel.deleteItemCart(cartItem.id)
@@ -44,12 +44,12 @@ private val cartViewModel: CartViewModel
 
 			binding.btnreduce.setOnClickListener {
 				viewModel.decrement(cartItem)
-				binding.tvNumber.text = cartItem.foodQuantity.toString()
+				binding.tvNumber.text = cartItem.itemQuantity.toString()
 			}
 
 			binding.btnadd.setOnClickListener {
 				viewModel.increment(cartItem)
-				binding.tvNumber.text = cartItem.foodQuantity.toString()
+				binding.tvNumber.text = cartItem.itemQuantity.toString()
 			}
 		}
 
@@ -61,6 +61,7 @@ private val cartViewModel: CartViewModel
 		notifyDataSetChanged()
 	}
 
+	//implementasikan dialogue msg yak
 	private fun showSnackBar(view: View) {
 		Snackbar.make(view, "Item removed from the cart", Snackbar.LENGTH_SHORT).show()
 	}

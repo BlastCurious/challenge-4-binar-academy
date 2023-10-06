@@ -67,12 +67,12 @@ class DetailFragmentMenuViewModel(application: Application) : ViewModel() {
                 totalPrice.value?.let { it1 ->
                     counter.value?.let { it2 ->
                         Cart(
-                            foodName = it.name,
+                            itemName = it.name,
                             imgId = it.images,
                             priceMenu = it.price,
-                            foodQuantity = it2,
+                            itemQuantity = it2,
                             totalPrice = it1,
-                            foodNote = ""
+                            itemNote = ""
                         )
                     }
                 }

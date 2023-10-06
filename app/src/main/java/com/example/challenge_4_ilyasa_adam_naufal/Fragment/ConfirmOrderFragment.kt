@@ -1,34 +1,22 @@
 package com.example.challenge_4_ilyasa_adam_naufal.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.challenge_4_ilyasa_adam_naufal.Adapter.CartAdapter
 import com.example.challenge_4_ilyasa_adam_naufal.R
+import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.CartViewModel
+import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.ViewModelFactory
+import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentConfirmOrderBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ConfirmOrderFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ConfirmOrderFragment : Fragment() {
-	// TODO: Rename and change types of parameters
-	private var param1: String? = null
-	private var param2: String? = null
+	private lateinit var binding: FragmentConfirmOrderBinding
+	private lateinit var cartViewModel: CartViewModel
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		arguments?.let {
-			param1 = it.getString(ARG_PARAM1)
-			param2 = it.getString(ARG_PARAM2)
-		}
-	}
 
 	override fun onCreateView(
 		inflater: LayoutInflater, container: ViewGroup?,
@@ -38,5 +26,56 @@ class ConfirmOrderFragment : Fragment() {
 		return inflater.inflate(R.layout.fragment_confirm_order, container, false)
 	}
 
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		btnBack()
+		setUpCartViewModel()
+		showRecyclerView()
+		summary()
+	}
 
+	private fun summary() {
+		cartViewModel.allCartItems.observe(viewLifecycleOwner) {
+			var listMenu = ""
+			var priceMenu = ""
+			var totalPrice = 0
+			it.forEach { item ->
+				listMenu += "${item.itemName} - ${item.itemQuantity} x ${item.priceMenu}\n"
+				priceMenu += "Rp. ${item.totalPrice}\n"
+				totalPrice += item.totalPrice
+			}
+
+			val totalText = "Rp. $totalPrice"
+			binding.itemName.text = listMenu
+			binding.itemQuantity.text = priceMenu
+			binding.totalPrice.text = totalText
+		}
+	}
+
+	private fun setUpCartViewModel() {
+		val viewModelFactory = ViewModelFactory(requireActivity().application)
+		cartViewModel = ViewModelProvider(this, viewModelFactory)[CartViewModel::class.java]
+	}
+
+	private fun showRecyclerView() {
+		val adapter = CartAdapter(cartViewModel)
+
+		binding.rvConfirm.adapter = adapter
+		binding.rvConfirm.layoutManager = LinearLayoutManager(requireContext())
+
+		cartViewModel.allCartItems.observe(viewLifecycleOwner) {
+			adapter.setData(it)
+
+			var totalPrice = 0
+			it.forEach { item ->
+				totalPrice += item.totalPrice
+			}
+		}
+	}
+
+	private fun btnBack() {
+		binding.btnback.setOnClickListener {
+			requireActivity().onBackPressed()
+		}
+	}
 }
