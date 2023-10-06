@@ -25,19 +25,34 @@ private val cartViewModel: CartViewModel
 
 	override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
 		val currentItem = cartItems[position]
-		holder.bind(currentItem)
+		holder.bind(currentItem, viewModel = cartViewModel)
 
 	}
 
 	class CartViewHolder(private val binding: ItemCartBinding) :
 		RecyclerView.ViewHolder(binding.root) {
 
-		fun bind(cartItem: Cart) {
+		fun bind(cartItem: Cart, viewModel: CartViewModel) {
 			binding.tvDesc.text = cartItem.foodName
 			binding.image.setImageResource(cartItem.imgId)
 			binding.tvPrice.text = cartItem.priceMenu.toString()
 			binding.tvNumber.text = cartItem.foodQuantity.toString()
+
+			binding.delete.setOnClickListener {
+			viewModel.deleteItemCart(cartItem.id)
+			}
+
+			binding.btnreduce.setOnClickListener {
+				viewModel.decrement(cartItem)
+				binding.tvNumber.text = cartItem.foodQuantity.toString()
+			}
+
+			binding.btnadd.setOnClickListener {
+				viewModel.increment(cartItem)
+				binding.tvNumber.text = cartItem.foodQuantity.toString()
+			}
 		}
+
 	}
 
 	@SuppressLint("NotifyDataSetChanged")

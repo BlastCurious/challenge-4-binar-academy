@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "cart_menu")
 data class Cart (
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
+    var id: Long = 0,
     @ColumnInfo(name = "food_name")
     var foodName: String,
     @ColumnInfo(name = "img_Id")

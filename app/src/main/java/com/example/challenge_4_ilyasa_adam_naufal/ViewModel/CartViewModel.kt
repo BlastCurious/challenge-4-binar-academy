@@ -6,10 +6,35 @@ import androidx.lifecycle.ViewModel
 import com.example.challenge_4_ilyasa_adam_naufal.Database.Cart
 import com.example.challenge_4_ilyasa_adam_naufal.Database.CartRepo
 
-class CartViewModel(application: Application):ViewModel() {
-    val repository: CartRepo = CartRepo(application)
+class CartViewModel(application: Application) : ViewModel() {
+	val repository: CartRepo = CartRepo(application)
 
-    val allCartItems: LiveData<List<Cart>> = repository.getAllCartItems()
+	val allCartItems: LiveData<List<Cart>> = repository.getAllCartItems()
 
-    //fun deleteAllMenu
+	fun deleteItemCart(cartId: Long) {
+		repository.deleteItemCart(cartId)
+	}
+
+	fun updateQuantityItem(cart: Cart) {
+		repository.updateQuantityItem(cart)
+	}
+
+	fun increment(cart: Cart) {
+		val newTotal = cart.foodQuantity + 1
+		cart.foodQuantity = newTotal
+		cart.totalPrice = cart.priceMenu * newTotal
+
+        updateQuantityItem(cart)
+	}
+
+
+	fun decrement(cart: Cart) {
+		val newTotal = cart.foodQuantity - 1
+		cart.foodQuantity = newTotal
+		cart.totalPrice = cart.priceMenu * newTotal
+
+        updateQuantityItem(cart)
+	}
+
+
 }

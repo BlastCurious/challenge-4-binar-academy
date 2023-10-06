@@ -34,8 +34,14 @@ class CartFragment : Fragment() {
 
 		cartViewModel.allCartItems.observe(viewLifecycleOwner) {
 			cartAdapter.setData(it)
-		}
 
+			var total_price = 0
+			it.forEach{item ->
+					total_price += item.totalPrice
+				}
+				val priceText = "Rp. $total_price"
+				binding.resultTotalPrice.text = priceText
+			}
 
 		return binding.root
 	}
@@ -45,32 +51,4 @@ class CartFragment : Fragment() {
 		cartViewModel = ViewModelProvider(this, viewModelFactory)[CartViewModel::class.java]
 	}
 
-	/*private fun setData() {
-		@Suppress("DEPRECATION")
-		item = arguments?.getParcelable("item")
-
-		item?.let {
-			binding.imageadd.setImageResource(it.images)
-			binding.nameadd.text = item?.name
-			binding.priceadd.text = item?.price.toString()
-
-			viewModel.initSelectedItem(it)
-		}
-	}
-
-	private fun wViewModel() {
-		val observer = Observer<Int> {
-			binding.quantity.text = it.toString()
-		}
-
-		viewModel.counter.observe(viewLifecycleOwner, observer)
-
-		binding.btnadd1.setOnClickListener {
-			viewModel.increment()
-		}
-
-		binding.reduce.setOnClickListener {
-			viewModel.decrement()
-		}
-	}*/
 }

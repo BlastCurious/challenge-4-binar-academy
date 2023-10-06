@@ -60,7 +60,7 @@
             android:layout_marginEnd="12dp"
 
             android:layout_marginBottom="10dp"
-            android:text="@string/pesan"
+            android:text="Pesan"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:cornerRadius="5dp"
@@ -74,11 +74,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="total_pesanan"
+            android:text="Total Pesanan"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+        <TextView
+            android:id="@+id/resultTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="total_pesanan"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Total_cart" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
