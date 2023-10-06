@@ -1,13 +1,13 @@
 package com.example.challenge_4_ilyasa_adam_naufal
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.ActivityMainBinding
-import com.example.challenge_4_ilyasa_adam_naufal.Fragment.CartFragment
-import com.example.challenge_4_ilyasa_adam_naufal.Fragment.HistoryFragment
-import com.example.challenge_4_ilyasa_adam_naufal.Fragment.HomeFragment
-import com.example.challenge_4_ilyasa_adam_naufal.Fragment.ProfileFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 class MainActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityMainBinding
@@ -16,25 +16,29 @@ class MainActivity : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		setContentView(binding.root)
-	}
-}
-		/*replaceFragment(HomeFragment())*/
 
-		/*binding.bottomNavBar.setOnItemSelectedListener {
+		val navHostFragment =
+			supportFragmentManager.findFragmentById(R.id.navContainer) as NavHostFragment
+		val navController = navHostFragment.navController
 
-			when (it.itemId) {
+		binding.bottomNavBar.setupWithNavController(navController)
 
-				R.id.home -> replaceFragment(HomeFragment())
-				R.id.cart -> replaceFragment(CartFragment())
-				R.id.history -> replaceFragment(HistoryFragment())
-				R.id.profile -> replaceFragment(ProfileFragment())
-
-				else -> {
-
-				}
-
+		navController.addOnDestinationChangedListener{ _, destination, _ ->
+			when (destination.id) {
+				R.id.detailItem -> hideBotNav()
+				R.id.confirmOrderFragment-> hideBotNav()
+				else -> showBotNav()
 			}
+		}
 
-		true
+	}
 
-		}*/
+	private fun showBotNav() {
+		binding.bottomNavBar.visibility = View.VISIBLE
+	}
+
+	private fun hideBotNav() {
+		binding.bottomNavBar.visibility = View.GONE
+	}
+
+}

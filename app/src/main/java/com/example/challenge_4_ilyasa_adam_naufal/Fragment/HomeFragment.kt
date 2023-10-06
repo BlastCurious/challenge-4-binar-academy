@@ -94,10 +94,10 @@ class HomeFragment : Fragment() {
 	private fun setupRecyclerView(isLinear: Boolean) {
 		layoutType = if (isLinear) {
 			showListLayout()
-			false
+			true
 		} else {
 			showGridLayout()
-			true
+			false
 		}
 
 		val adapter = MenuAdapter(listMenu, gridType = layoutType, onItemClick = {
@@ -134,7 +134,7 @@ class HomeFragment : Fragment() {
 
 	private fun showListLayout() {
 		binding.recycleviewVertical.layoutManager = LinearLayoutManager(requireActivity())
-		binding.recycleviewVertical.adapter = MenuAdapter(listMenu, gridType = false)
+		binding.recycleviewVertical.adapter = MenuAdapter(listMenu, gridType = true)
 		binding.gridlist.setImageDrawable(
 			ContextCompat.getDrawable(
 				requireActivity(), R.drawable.baseline_grid_view_24
@@ -144,7 +144,7 @@ class HomeFragment : Fragment() {
 
 	private fun showGridLayout() {
 		binding.recycleviewVertical.layoutManager = GridLayoutManager(requireActivity(), 2)
-		binding.recycleviewVertical.adapter = MenuAdapter(listMenu, gridType = true)
+		binding.recycleviewVertical.adapter = MenuAdapter(listMenu, gridType = false)
 		binding.gridlist.setImageDrawable(
 			ContextCompat.getDrawable(
 				requireActivity(), R.drawable.baseline_view_list_24

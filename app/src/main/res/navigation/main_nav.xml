@@ -12,6 +12,15 @@
         <action
             android:id="@+id/action_homeFragment_to_detailItem"
             app:destination="@id/detailItem" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailItem"
@@ -48,4 +57,14 @@
         android:id="@+id/confirmOrderFragment"
         android:name="com.example.challenge_4_ilyasa_adam_naufal.Fragment.ConfirmOrderFragment"
         android:label="ConfirmOrderFragment" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.Fragment.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.Fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>
