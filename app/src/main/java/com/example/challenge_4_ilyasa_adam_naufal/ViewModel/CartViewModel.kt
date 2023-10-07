@@ -22,6 +22,7 @@ class CartViewModel(application: Application) : ViewModel() {
 	fun increment(cart: Cart) {
 		val newTotal = cart.itemQuantity + 1
 		cart.itemQuantity = newTotal
+
 		cart.totalPrice = cart.priceMenu * newTotal
 
         updateQuantityItem(cart)
@@ -31,6 +32,7 @@ class CartViewModel(application: Application) : ViewModel() {
 	fun decrement(cart: Cart) {
 		val newTotal = cart.itemQuantity - 1
 		cart.itemQuantity = newTotal
+
 		cart.totalPrice = cart.priceMenu * newTotal
 
         updateQuantityItem(cart)

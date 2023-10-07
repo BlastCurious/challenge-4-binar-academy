@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge_4_ilyasa_adam_naufal.Adapter.CartAdapter
-import com.example.challenge_4_ilyasa_adam_naufal.R
 import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.CartViewModel
 import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.ViewModelFactory
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentConfirmOrderBinding
@@ -58,7 +57,7 @@ class ConfirmOrderFragment : Fragment() {
 	}
 
 	private fun showRecyclerView() {
-		val adapter = CartAdapter(cartViewModel)
+		val adapter = CartAdapter(cartViewModel,true)
 
 		binding.rvConfirm.adapter = adapter
 		binding.rvConfirm.layoutManager = LinearLayoutManager(requireContext())

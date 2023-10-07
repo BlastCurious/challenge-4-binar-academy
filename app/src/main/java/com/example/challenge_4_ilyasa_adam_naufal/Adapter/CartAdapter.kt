@@ -11,7 +11,8 @@ import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.CartViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class CartAdapter(
-private val cartViewModel: CartViewModel
+private val cartViewModel: CartViewModel,
+	private val cfmOrder: Boolean
 ) : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
 	private var cartItems: List<Cart> = emptyList()
@@ -25,19 +26,31 @@ private val cartViewModel: CartViewModel
 
 	override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
 		val currentItem = cartItems[position]
-		holder.bind(currentItem, viewModel = cartViewModel)
+
+		holder.bind(currentItem, viewModel = cartViewModel,cfmOrder)
 
 	}
 
 	class CartViewHolder(private val binding: ItemCartBinding) :
 		RecyclerView.ViewHolder(binding.root) {
 
-		fun bind(cartItem: Cart, viewModel: CartViewModel) {
-			binding.tvDesc.text = cartItem.itemName
-			binding.image.setImageResource(cartItem.imgId)
-			binding.tvPrice.text = cartItem.priceMenu.toString()
-			binding.tvNumber.text = cartItem.itemQuantity.toString()
+		fun bind(cartItem: Cart, viewModel: CartViewModel,cfmOrder: Boolean) {
 
+			if (cfmOrder){
+				binding.delete.visibility = View.GONE
+				binding.btnadd.visibility = View.INVISIBLE
+				binding.btnreduce.visibility = View.INVISIBLE
+				binding.tvDesc.text = cartItem.itemName
+				binding.image.setImageResource(cartItem.imgId)
+				binding.tvPrice.text = cartItem.priceMenu.toString()
+				binding.tvNumber.text = cartItem.itemQuantity.toString()
+			}
+			else {
+				binding.tvDesc.text = cartItem.itemName
+				binding.image.setImageResource(cartItem.imgId)
+				binding.tvPrice.text = cartItem.priceMenu.toString()
+				binding.tvNumber.text = cartItem.itemQuantity.toString()
+			}
 			binding.delete.setOnClickListener {
 			viewModel.deleteItemCart(cartItem.id)
 			}

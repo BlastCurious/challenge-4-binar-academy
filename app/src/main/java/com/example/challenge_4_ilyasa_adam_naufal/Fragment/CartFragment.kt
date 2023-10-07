@@ -27,7 +27,7 @@ class CartFragment : Fragment() {
 		binding = FragmentCartBinding.inflate(inflater, container, false)
 		setUpCartViewModel()
 
-		cartAdapter = CartAdapter(cartViewModel)
+		cartAdapter = CartAdapter(cartViewModel,false)
 		binding.rvCart.setHasFixedSize(true)
 		binding.rvCart.layoutManager = LinearLayoutManager(requireContext())
 		binding.rvCart.adapter = cartAdapter
@@ -57,5 +57,6 @@ class CartFragment : Fragment() {
 				R.id.action_cartFragment_to_confirmOrderFragment
 			)
 		}
+
 	}
 }
