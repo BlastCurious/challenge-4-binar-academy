@@ -22,7 +22,7 @@ class ConfirmOrderFragment : Fragment() {
 		savedInstanceState: Bundle?
 	): View? {
 		// Inflate the layout for this fragment
-		binding = FragmentConfirmOrderBinding.inflate(inflater, container, false)
+		binding = FragmentConfirmOrderBinding.inflate(inflater,container, false)
 		return binding.root
 	}
 
