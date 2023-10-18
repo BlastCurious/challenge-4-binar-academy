@@ -34,4 +34,16 @@
     <string name="cash">Cash</string>
     <string name="e_wallet">E-Wallet</string>
     <string name="take_away">Take Away</string>
+    <string name="login">login</string>
+    <string name="register_login">register_login</string>
+    <string name="forgot_your_password">forgot_your_password</string>
+    <string name="don_t_have_account">don\'t have account?</string>
+    <string name="username_login">username_login</string>
+    <string name="et_password">password</string>
+    <string name="login_user">login_user</string>
+    <string name="register">register</string>
+    <string name="your_email">your email</string>
+    <string name="your_password">your_password</string>
+    <string name="yourb_username">yourb username</string>
+    <string name="already_have_an_account">already have an account</string>
 </resources>
