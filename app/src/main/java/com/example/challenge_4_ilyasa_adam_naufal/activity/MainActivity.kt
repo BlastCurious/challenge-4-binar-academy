@@ -1,12 +1,12 @@
-package com.example.challenge_4_ilyasa_adam_naufal
+package com.example.challenge_4_ilyasa_adam_naufal.activity
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.challenge_4_ilyasa_adam_naufal.R
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 		navController.addOnDestinationChangedListener{ _, destination, _ ->
 			when (destination.id) {
 				R.id.detailItem -> hideBotNav()
-				R.id.confirmOrderFragment-> hideBotNav()
+				R.id.confirmOrderFragment -> hideBotNav()
 				else -> showBotNav()
 			}
 		}

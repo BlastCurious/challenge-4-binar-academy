@@ -1,4 +1,4 @@
-package com.example.challenge_4_ilyasa_adam_naufal.Database
+package com.example.challenge_4_ilyasa_adam_naufal.database
 
 import android.content.Context
 import androidx.room.Database

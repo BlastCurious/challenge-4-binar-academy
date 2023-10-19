@@ -1,4 +1,4 @@
-package com.example.challenge_4_ilyasa_adam_naufal.Adapter
+package com.example.challenge_4_ilyasa_adam_naufal.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.challenge_4_ilyasa_adam_naufal.DataClass.Category
+import com.example.challenge_4_ilyasa_adam_naufal.dataClass.Category
 import com.example.challenge_4_ilyasa_adam_naufal.R
 
 class 	CategoryAdapter(

@@ -1,4 +1,4 @@
-package com.example.challenge_4_ilyasa_adam_naufal.Fragment
+package com.example.challenge_4_ilyasa_adam_naufal.fragment
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.challenge_4_ilyasa_adam_naufal.DataClass.ItemMenu
+import com.example.challenge_4_ilyasa_adam_naufal.dataClass.ItemMenu
 import com.example.challenge_4_ilyasa_adam_naufal.R
-import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.DetailFragmentMenuViewModel
-import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.ViewModelFactory
+import com.example.challenge_4_ilyasa_adam_naufal.viewModel.DetailFragmentMenuViewModel
+import com.example.challenge_4_ilyasa_adam_naufal.viewModel.ViewModelFactory
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentDetailItemBinding
 
 class DetailItemFragment: Fragment() {

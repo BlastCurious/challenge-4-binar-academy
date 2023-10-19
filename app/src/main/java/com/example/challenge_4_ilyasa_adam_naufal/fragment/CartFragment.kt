@@ -1,4 +1,4 @@
-package com.example.challenge_4_ilyasa_adam_naufal.Fragment
+package com.example.challenge_4_ilyasa_adam_naufal.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.challenge_4_ilyasa_adam_naufal.Adapter.CartAdapter
+import com.example.challenge_4_ilyasa_adam_naufal.adapter.CartAdapter
 import com.example.challenge_4_ilyasa_adam_naufal.R
-import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.CartViewModel
-import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.ViewModelFactory
+import com.example.challenge_4_ilyasa_adam_naufal.viewModel.CartViewModel
+import com.example.challenge_4_ilyasa_adam_naufal.viewModel.ViewModelFactory
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentCartBinding
 
 

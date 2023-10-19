@@ -1,4 +1,4 @@
-package com.example.challenge_4_ilyasa_adam_naufal.Fragment
+package com.example.challenge_4_ilyasa_adam_naufal.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -12,13 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.challenge_4_ilyasa_adam_naufal.DataClass.Category
-import com.example.challenge_4_ilyasa_adam_naufal.Adapter.CategoryAdapter
-import com.example.challenge_4_ilyasa_adam_naufal.DataClass.ItemMenu
-import com.example.challenge_4_ilyasa_adam_naufal.Adapter.MenuAdapter
+import com.example.challenge_4_ilyasa_adam_naufal.dataClass.Category
+import com.example.challenge_4_ilyasa_adam_naufal.adapter.CategoryAdapter
+import com.example.challenge_4_ilyasa_adam_naufal.dataClass.ItemMenu
+import com.example.challenge_4_ilyasa_adam_naufal.adapter.MenuAdapter
 import com.example.challenge_4_ilyasa_adam_naufal.R
 import com.example.challenge_4_ilyasa_adam_naufal.SharedPreferences
-import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.HomeViewModel
+import com.example.challenge_4_ilyasa_adam_naufal.viewModel.HomeViewModel
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {

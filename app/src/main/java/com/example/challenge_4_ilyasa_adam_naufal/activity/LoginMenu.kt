@@ -1,7 +1,8 @@
-package com.example.challenge_4_ilyasa_adam_naufal
+package com.example.challenge_4_ilyasa_adam_naufal.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.challenge_4_ilyasa_adam_naufal.R
 
 class LoginMenu : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.challenge_4_ilyasa_adam_naufal.Fragment.HomeFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -24,7 +24,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailItem"
-        android:name="com.example.challenge_4_ilyasa_adam_naufal.Fragment.DetailItemFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.DetailItemFragment"
         android:label="fragment_detail_item"
         tools:layout="@layout/fragment_detail_item" >
         <argument
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.example.challenge_4_ilyasa_adam_naufal.Fragment.CartFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" >
         <action
@@ -55,16 +55,16 @@
     </fragment>
     <fragment
         android:id="@+id/confirmOrderFragment"
-        android:name="com.example.challenge_4_ilyasa_adam_naufal.Fragment.ConfirmOrderFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.ConfirmOrderFragment"
         android:label="ConfirmOrderFragment" />
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.example.challenge_4_ilyasa_adam_naufal.Fragment.HistoryFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.HistoryFragment"
         android:label="fragment_history"
         tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.challenge_4_ilyasa_adam_naufal.Fragment.ProfileFragment"
+        android:name="com.example.challenge_4_ilyasa_adam_naufal.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

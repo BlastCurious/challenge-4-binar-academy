@@ -1,13 +1,13 @@
-package com.example.challenge_4_ilyasa_adam_naufal.Adapter
+package com.example.challenge_4_ilyasa_adam_naufal.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.challenge_4_ilyasa_adam_naufal.Database.Cart
+import com.example.challenge_4_ilyasa_adam_naufal.database.Cart
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.ItemCartBinding
-import com.example.challenge_4_ilyasa_adam_naufal.ViewModel.CartViewModel
+import com.example.challenge_4_ilyasa_adam_naufal.viewModel.CartViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class CartAdapter(

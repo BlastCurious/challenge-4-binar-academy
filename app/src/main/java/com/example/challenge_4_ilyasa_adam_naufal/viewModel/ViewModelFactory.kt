@@ -1,4 +1,4 @@
-package com.example.challenge_4_ilyasa_adam_naufal.ViewModel
+package com.example.challenge_4_ilyasa_adam_naufal.viewModel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
@@ -14,6 +14,6 @@ class ViewModelFactory(
         } else if (modelClass.isAssignableFrom(CartViewModel::class.java)) {
             return CartViewModel(application) as T
         }
-        throw IllegalArgumentException("Unknown ViewModel Class")
+        throw IllegalArgumentException("Unknown viewModel Class")
     }
 }

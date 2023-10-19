@@ -1,4 +1,4 @@
-	package com.example.challenge_4_ilyasa_adam_naufal
+	package com.example.challenge_4_ilyasa_adam_naufal.activity
 
 	import android.app.Activity
 	import android.os.Bundle

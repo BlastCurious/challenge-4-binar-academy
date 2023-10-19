@@ -1,10 +1,10 @@
-package com.example.challenge_4_ilyasa_adam_naufal.ViewModel
+package com.example.challenge_4_ilyasa_adam_naufal.viewModel
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.challenge_4_ilyasa_adam_naufal.Database.Cart
-import com.example.challenge_4_ilyasa_adam_naufal.Database.CartRepo
+import com.example.challenge_4_ilyasa_adam_naufal.database.Cart
+import com.example.challenge_4_ilyasa_adam_naufal.database.CartRepo
 
 class CartViewModel(application: Application) : ViewModel() {
 	val repository: CartRepo = CartRepo(application)
