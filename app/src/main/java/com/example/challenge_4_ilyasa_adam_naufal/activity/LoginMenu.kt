@@ -20,31 +20,15 @@ class LoginMenu : AppCompatActivity() {
 		firebaseAuth = FirebaseAuth.getInstance()
 
 		binding.btnLogin.setOnClickListener {
-			val email = binding.etEmailLogin.text.toString()
-			val password = binding.etPwLogin.text.toString()
+			login(binding.etEmailLogin.text.toString(), binding.etPwLogin.text.toString())
+		}
 
-			if (email.isNotEmpty() && password.isNotEmpty()) {
-				firebaseAuth.createUserWithEmailAndPassword(email, password)
-					.addOnCompleteListener(this) { task ->
-						if (task.isSuccessful) {
-							Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
-							val intent = Intent(this, MainActivity::class.java)
-							startActivity(intent)
-							finish()
-						} else {
-							Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
-						}
-					}
-			} else {
-				Toast.makeText(this, "Please Enter Email and Password", Toast.LENGTH_SHORT).show()
-			}
-
-			binding.tvSignup.setOnClickListener {
-				startActivity(Intent(this, SignUpMenu::class.java))
-				finish()
-			}
+		binding.tvSignup.setOnClickListener {
+			startActivity(Intent(this, SignUpMenu::class.java))
+			finish()
 		}
 	}
+
 
 	override fun onStart() {
 		super.onStart()
@@ -54,5 +38,26 @@ class LoginMenu : AppCompatActivity() {
 			startActivity(intent)
 			finish()
 		}
+	}
+
+	private fun login(email: String, password: String) {
+		if (email.isNotEmpty() && password.isNotEmpty()) {
+			firebaseAuth.signInWithEmailAndPassword(email, password)
+				.addOnCompleteListener(this) { task ->
+					if (task.isSuccessful) {
+						Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show()
+						val intent = Intent(this, MainActivity::class.java)
+						startActivity(intent)
+						finish()
+					} else {
+						Toast.makeText(
+							this, "Authentication failed.", Toast.LENGTH_SHORT,
+						).show()
+					}
+				}
+		} else {
+			Toast.makeText(this, "Please Enter Email and Password", Toast.LENGTH_SHORT).show()
+		}
+
 	}
 }

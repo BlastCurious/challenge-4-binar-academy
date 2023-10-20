@@ -22,38 +22,37 @@ class SignUpMenu : AppCompatActivity() {
 		firebaseAuth = FirebaseAuth.getInstance()
 
 		binding.btnSignup.setOnClickListener {
-			val email = binding.etEmailSignup.text.toString()
-			val password = binding.etPwSignup.text.toString()
-
-			val emailUser = binding.etEmailSignup.text.toString()
-			val addressUser = binding.etAddress.text.toString()
-			val mobileUser = binding.etMobile.text.toString()
-
-			if (email.isNotEmpty() && password.isNotEmpty()) {
-				firebaseAuth.createUserWithEmailAndPassword(email, password)
-					.addOnCompleteListener(this) { task ->
-						if (task.isSuccessful) {
-							insertProfile(emailUser, addressUser, mobileUser)
-							Toast.makeText(this, "Sign Up Successful", Toast.LENGTH_SHORT).show()
-
-							val intent = Intent(this, LoginMenu::class.java)
-							startActivity(intent)
-							finish()
-						} else {
-							Toast.makeText(this, "Sign Up Unsuccessful", Toast.LENGTH_SHORT).show()
-						}
-					}
-			} else {
-				Toast.makeText(this, "Enter Email and Password", Toast.LENGTH_SHORT).show()
-			}
-
-			binding.tvLogintext.setOnClickListener {
-				startActivity(Intent(this, LoginMenu::class.java))
-				finish()
-			}
+			signup(binding.etEmailSignup.text.toString(), binding.etPwSignup.text.toString())
 		}
+
+		binding.tvLogintext.setOnClickListener {
+			startActivity(Intent(this, LoginMenu::class.java))
+			finish()
+		}
+
 	}
 
+	private fun signup(email: String, password: String) {
+		val emailUser = binding.etEmailSignup.text.toString()
+		val addressUser = binding.etAddress.text.toString()
+		val mobileUser = binding.etMobile.text.toString()
+
+		firebaseAuth.createUserWithEmailAndPassword(email, password)
+			.addOnCompleteListener(this) { task ->
+				if (task.isSuccessful) {
+					insertProfile(emailUser, addressUser, mobileUser)
+					Toast.makeText(this, "Register Success", Toast.LENGTH_SHORT).show()
+					val intent = Intent(this, LoginMenu::class.java)
+					startActivity(intent)
+				} else {
+					Toast.makeText(
+						baseContext,
+						"Authentication failed.",
+						Toast.LENGTH_SHORT,
+					).show()
+				}
+			}
+	}
 	private fun insertProfile(email: String, address: String, mobile: String) {
 		val executorService: ExecutorService = Executors.newSingleThreadExecutor()
 

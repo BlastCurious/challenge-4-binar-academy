@@ -59,9 +59,9 @@ class HomeFragment : Fragment() {
 	@SuppressLint("NotifyDataSetChanged")
 	private fun showLayout(data: ListMenu) {
 		if (isGrid) {
-			showListLayout(data)
-		} else {
 			showGridLayout(data)
+		} else {
+			showListLayout(data)
 		}
 
 	}

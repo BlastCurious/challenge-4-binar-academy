@@ -32,7 +32,7 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_email_signup"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
@@ -56,7 +56,7 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_pw_signup"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
@@ -84,7 +84,7 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_address"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
@@ -110,7 +110,7 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_mobile"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
@@ -140,7 +140,7 @@
         android:id="@+id/tv_Already_haveacc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:text="@string/already_have_an_account"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,8 +151,8 @@
         android:id="@+id/tv_logintext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
         android:text="@string/login"
         android:textSize="16sp"
         android:textStyle="bold"

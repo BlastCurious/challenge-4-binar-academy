@@ -1,8 +1,10 @@
 package com.example.challenge_4_ilyasa_adam_naufal.dataClass
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-
+import kotlinx.parcelize.Parcelize
+@Parcelize
 data class DataListMenu(
     @SerializedName("createdAt")
     val createdAt: String?,
@@ -22,4 +24,4 @@ data class DataListMenu(
     val nama: String,
     @SerializedName("updatedAt")
     val updatedAt: String?
-)
+): Parcelable

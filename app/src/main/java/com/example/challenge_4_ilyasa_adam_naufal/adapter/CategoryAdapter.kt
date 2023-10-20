@@ -28,12 +28,12 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 	fun submitCategoryMenuResponse(value: List<DataCategory>) = differ.submitList(value)
 
 	// Membuat Holder
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryAdapter.ViewHolder {
 		val inflater = LayoutInflater.from(parent.context)
 		return ViewHolder(CategoryItemMenuBinding.inflate(inflater, parent, false))
 	}
 
-	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+	override fun onBindViewHolder(holder: CategoryAdapter.ViewHolder, position: Int) {
 		val data = differ.currentList[position]
 		data.let { holder.bind(data) }
 

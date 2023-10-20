@@ -1,14 +1,12 @@
 package com.example.challenge_4_ilyasa_adam_naufal.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.challenge_4_ilyasa_adam_naufal.R
 import com.example.challenge_4_ilyasa_adam_naufal.dataClass.DataListMenu
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.GridItemMenuBinding
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.ListItemMenuBinding

@@ -14,8 +14,9 @@ data class Profile(
     var id: Int = 0,
     @ColumnInfo(name = "email_user")
     var email: String,
-    @ColumnInfo(name ="mobile_user")
-    var mobile: String?,
     @ColumnInfo(name = "address_user")
     var address: String,
+    @ColumnInfo(name ="mobile_user")
+    var mobile: String?,
+
 ): Parcelable
