@@ -2,9 +2,11 @@ package com.example.challenge_4_ilyasa_adam_naufal.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -18,8 +20,14 @@ import com.example.challenge_4_ilyasa_adam_naufal.dataClass.ItemMenu
 import com.example.challenge_4_ilyasa_adam_naufal.adapter.MenuAdapter
 import com.example.challenge_4_ilyasa_adam_naufal.R
 import com.example.challenge_4_ilyasa_adam_naufal.SharedPreferences
+import com.example.challenge_4_ilyasa_adam_naufal.api.APIClient
+import com.example.challenge_4_ilyasa_adam_naufal.dataClass.CategoryMenu
+import com.example.challenge_4_ilyasa_adam_naufal.dataClass.ListMenu
 import com.example.challenge_4_ilyasa_adam_naufal.viewModel.HomeViewModel
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentHomeBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
@@ -132,6 +140,7 @@ class HomeFragment : Fragment() {
 
 	}
 
+
 	private fun showListLayout() {
 		binding.recycleviewVertical.layoutManager = LinearLayoutManager(requireActivity())
 		binding.recycleviewVertical.adapter = MenuAdapter(listMenu, gridType = true)
@@ -166,5 +175,51 @@ class HomeFragment : Fragment() {
 				findNavController().navigate(R.id.action_homeFragment_to_detailItem, bundle)
 			}
 		binding.recycleviewVertical.adapter = menuAdapter
+	}
+
+	private fun fetchListMenu() {
+		APIClient.instance.getListMenu()
+			.enqueue(object : Callback<ListMenu> {
+				override fun onResponse(
+					call: Call<ListMenu>,
+					response: Response<ListMenu>
+				) {
+					val body = response.body()
+					val code = response.code()
+
+					if(code == 200) {
+						showLayout(body!!)
+						binding.progressBar.visibility = View.GONE
+					} else {
+						binding.progressBar.visibility = View.GONE
+					}
+				}
+
+				override fun onFailure(call: Call<ListMenu>, t: Throwable) {
+					binding.progressBar.visibility = View.GONE
+					Toast.makeText(requireActivity(), "Error: $t", Toast.LENGTH_SHORT).show()
+				}
+			})
+	}
+	private fun fetchCategoryMenu() {
+		APIClient.instance.getCategoryMenu()
+			.enqueue(object : Callback<CategoryMenu> {
+				override fun onResponse(
+					call: Call<CategoryMenu>,
+					response: Response<CategoryMenu>
+				) {
+					val body = response.body()
+					val code = response.code()
+
+					Log.d("SimpleNetworking", body.toString())
+					if(code == 200) {
+						showCategory(body!!)
+					}
+				}
+
+				override fun onFailure(call: Call<CategoryMenu>, t: Throwable) {
+					Toast.makeText(requireActivity(), "Error: $t", Toast.LENGTH_SHORT).show()
+				}
+			})
 	}
 }

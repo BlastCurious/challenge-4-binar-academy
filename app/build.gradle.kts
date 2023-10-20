@@ -56,7 +56,7 @@ dependencies {
 	implementation("androidx.navigation:navigation-fragment-ktx:2.7.4")
 	implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
 
-	// viewModel
+	//ViewModel
 	implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
 	implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2")
 
@@ -64,9 +64,10 @@ dependencies {
 	implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 	implementation("androidx.lifecycle:lifecycle-livedata-core-ktx:2.6.2")
 
-	//database
+	//Database
 	implementation("androidx.room:room-runtime:2.5.2")
 	implementation("androidx.room:room-ktx:2.5.2")
+	implementation("com.google.firebase:firebase-database-ktx:20.3.0")
 	annotationProcessor("androidx.room:room-compiler:2.5.2")
 	kapt("androidx.room:room-compiler:2.5.2")
 
@@ -83,7 +84,7 @@ dependencies {
 	implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
 	implementation("com.google.firebase:firebase-analytics-ktx:21.3.0")
 	implementation("com.google.firebase:firebase-crashlytics-ktx:18.4.3")
-	implementation("com.google.firebase:firebase-auth:22.1.2")
+	implementation("com.google.firebase:firebase-auth-ktx:22.2.0")
 	implementation("com.google.firebase:firebase-firestore")
 
 	testImplementation("junit:junit:4.13.2")

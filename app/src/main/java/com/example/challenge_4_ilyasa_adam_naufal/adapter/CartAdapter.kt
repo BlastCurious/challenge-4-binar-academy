@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.challenge_4_ilyasa_adam_naufal.database.Cart
+import com.example.challenge_4_ilyasa_adam_naufal.database.cart.Cart
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.ItemCartBinding
 import com.example.challenge_4_ilyasa_adam_naufal.viewModel.CartViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -34,7 +34,7 @@ private val cartViewModel: CartViewModel,
 	class CartViewHolder(private val binding: ItemCartBinding) :
 		RecyclerView.ViewHolder(binding.root) {
 
-		fun bind(cartItem: Cart, viewModel: CartViewModel,cfmOrder: Boolean) {
+		fun bind(cartItem: Cart, viewModel: CartViewModel, cfmOrder: Boolean) {
 
 			if (cfmOrder){
 				binding.delete.visibility = View.GONE

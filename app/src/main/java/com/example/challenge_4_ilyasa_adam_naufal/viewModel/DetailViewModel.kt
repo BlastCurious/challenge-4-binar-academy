@@ -4,11 +4,11 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.challenge_4_ilyasa_adam_naufal.database.Cart
-import com.example.challenge_4_ilyasa_adam_naufal.database.CartRepo
+import com.example.challenge_4_ilyasa_adam_naufal.database.cart.Cart
+import com.example.challenge_4_ilyasa_adam_naufal.database.cart.CartRepo
 import com.example.challenge_4_ilyasa_adam_naufal.dataClass.ItemMenu
 
-class DetailFragmentMenuViewModel(application: Application) : ViewModel() {
+class DetailViewModel(application: Application) : ViewModel() {
 
     private val _counter = MutableLiveData(1)
     val counter: LiveData<Int> = _counter

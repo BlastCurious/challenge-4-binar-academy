@@ -1,23 +1,16 @@
 package com.example.challenge_4_ilyasa_adam_naufal.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.challenge_4_ilyasa_adam_naufal.dataClass.Category
+import com.bumptech.glide.Glide
 import com.example.challenge_4_ilyasa_adam_naufal.R
+import com.example.challenge_4_ilyasa_adam_naufal.dataClass.DataCategory
+import com.example.challenge_4_ilyasa_adam_naufal.databinding.CategoryItemMenuBinding
 
-class 	CategoryAdapter(
-	private val listkategori: ArrayList<Category>
-) :
-	RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
-	class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-		val image = itemView.findViewById<ImageView>(R.id.category_image_menu)!!
-		val name = itemView.findViewById<TextView>(R.id.titleCat)!!
-
-	}
+class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.ViewHolder>() {
 
 	// Membuat Holder
 	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,7 +20,7 @@ class 	CategoryAdapter(
 	}
 
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-		val (name,image) = listkategori	[position]
+		val (name, image) = listkategori[position]
 		holder.name.text = name
 		holder.image.setImageResource(image)
 
@@ -37,4 +30,18 @@ class 	CategoryAdapter(
 		return listkategori.size
 	}
 
+	inner class ViewHolder(
+		private var binding:
+		CategoryItemMenuBinding
+	) : RecyclerView.ViewHolder(binding.root) {
+		fun bind(dataCategory: DataCategory) {
+			binding.apply {
+				titleCat.text = data.nama
+				Glide.with(this.categoryImageMenu)
+					.load(data.imageUrl)
+					.fitCenter()
+					.into(binding.categoryImageMenu)
+			}
+		}
+	}
 }

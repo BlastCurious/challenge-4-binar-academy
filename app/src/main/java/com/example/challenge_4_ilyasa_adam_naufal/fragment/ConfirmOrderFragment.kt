@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.challenge_4_ilyasa_adam_naufal.adapter.CartAdapter
 import com.example.challenge_4_ilyasa_adam_naufal.viewModel.CartViewModel
-import com.example.challenge_4_ilyasa_adam_naufal.viewModel.ViewModelFactory
+import com.example.challenge_4_ilyasa_adam_naufal.viewmodelfactory.ViewModelFactory
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentConfirmOrderBinding
 
 class ConfirmOrderFragment : Fragment() {

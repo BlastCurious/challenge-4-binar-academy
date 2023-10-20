@@ -14,8 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.challenge_4_ilyasa_adam_naufal.dataClass.ItemMenu
 import com.example.challenge_4_ilyasa_adam_naufal.R
-import com.example.challenge_4_ilyasa_adam_naufal.viewModel.DetailFragmentMenuViewModel
-import com.example.challenge_4_ilyasa_adam_naufal.viewModel.ViewModelFactory
+import com.example.challenge_4_ilyasa_adam_naufal.viewModel.DetailViewModel
+import com.example.challenge_4_ilyasa_adam_naufal.viewmodelfactory.ViewModelFactory
 import com.example.challenge_4_ilyasa_adam_naufal.databinding.FragmentDetailItemBinding
 
 class DetailItemFragment: Fragment() {
@@ -24,7 +24,7 @@ class DetailItemFragment: Fragment() {
 
 	private val locationUri: String = "https://maps.app.goo.gl/SiFzf18kByYndQqg7"
 
-	private lateinit var viewModel: DetailFragmentMenuViewModel
+	private lateinit var viewModel: DetailViewModel
 
 	private var item: ItemMenu? = null
 
@@ -87,7 +87,7 @@ class DetailItemFragment: Fragment() {
 
 	private fun setUpCartViewModel() {
 		val viewModelFactory = ViewModelFactory(requireActivity().application)
-		viewModel = ViewModelProvider(this, viewModelFactory)[DetailFragmentMenuViewModel::class.java]
+		viewModel = ViewModelProvider(this, viewModelFactory)[DetailViewModel::class.java]
 	}
 
 	private fun setData() {

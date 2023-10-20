@@ -18,10 +18,7 @@
         android:theme="@style/Theme.Challenge_4_ilyasa_adam_naufal"
         tools:targetApi="31">
         <activity
-            android:name=".activity.EmailPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.RegisterMenu"
+            android:name=".activity.SignUpMenu"
             android:exported="false" />
         <activity
             android:name=".activity.LoginMenu"
