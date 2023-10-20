@@ -6,20 +6,24 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 
 
-class SharedPreferences (context:Context) {
-	companion object{
-		private val USER = "User SharePref"
-		private val KEY = "KEY SharePref"
+object SharedPreferences {
+	private lateinit var prefs: SharedPreferences
+	private const val PREF_NAME = "layout"
+
+	fun init(context: Context) {
+		prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
 	}
 
-	private val pref: SharedPreferences =
-		context.getSharedPreferences(USER, 0)
-
-	fun getPrefLayout():Boolean{
-		return pref.getBoolean(KEY, true)
+	fun read(key: String, value: Boolean): Boolean {
+		return prefs.getBoolean(key, value)
 	}
 
-	fun savePrefLayout(isListView: Boolean){
-		pref.edit().putBoolean(KEY, isListView).apply()
+	fun write(key: String, value: Boolean) {
+		val prefsEditor: SharedPreferences.Editor = prefs.edit()
+		with(prefsEditor) {
+			putBoolean(key, value)
+			apply()
+			commit()
+		}
 	}
 }

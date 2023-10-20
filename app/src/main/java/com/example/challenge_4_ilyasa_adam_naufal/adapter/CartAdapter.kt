@@ -74,9 +74,4 @@ private val cartViewModel: CartViewModel,
 		notifyDataSetChanged()
 	}
 
-	//implementasikan dialogue msg yak
-	private fun showSnackBar(view: View) {
-		Snackbar.make(view, "Item removed from the cart", Snackbar.LENGTH_SHORT).show()
-	}
-
 }

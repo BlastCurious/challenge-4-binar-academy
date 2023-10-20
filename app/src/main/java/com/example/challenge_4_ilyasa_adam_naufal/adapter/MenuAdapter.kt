@@ -1,58 +1,96 @@
 package com.example.challenge_4_ilyasa_adam_naufal.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.challenge_4_ilyasa_adam_naufal.dataClass.ItemMenu
+import com.bumptech.glide.Glide
 import com.example.challenge_4_ilyasa_adam_naufal.R
+import com.example.challenge_4_ilyasa_adam_naufal.dataClass.DataListMenu
+import com.example.challenge_4_ilyasa_adam_naufal.databinding.GridItemMenuBinding
+import com.example.challenge_4_ilyasa_adam_naufal.databinding.ListItemMenuBinding
 
 class MenuAdapter(
-	private val listmenu: ArrayList<ItemMenu>,
 	var gridType: Boolean = true,
-	var onItemClick: ((ItemMenu) -> Unit)? = null
+	var onItemClick: OnClickListener
 ) :
-	RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
+	RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-	// Membuat Holder
-	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-		val layoutResId = if(gridType) R.layout.list_item_menu else R.layout.grid_item_menu
-		val view : View = LayoutInflater.from(parent.context).inflate(layoutResId,parent,false)
-		return ViewHolder(view)
+	private val diffCallBack = object : DiffUtil.ItemCallback<DataListMenu>() {
+		override fun areItemsTheSame(
+			oldItem: DataListMenu,
+			newItem: DataListMenu
+		): Boolean = oldItem.id == newItem.id
 
+		override fun areContentsTheSame(
+			oldItem: DataListMenu,
+			newItem: DataListMenu
+		): Boolean = oldItem == newItem
 	}
 
-	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-		val (name, price, image) = listmenu[position]
-		holder.name.text = name
-		holder.price.text = price.toString()
-		holder.image.setImageResource(image)
+	private val differ = AsyncListDiffer(this, diffCallBack)
 
-		val currentItem = listmenu[position]
+	fun submitListMenuResponse(value: List<DataListMenu>) = differ.submitList(value)
+
+	// Membuat Holder
+	override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+		val inflater = LayoutInflater.from(parent.context)
+		if (gridType) {
+			return GridViewHolder(GridItemMenuBinding.inflate(inflater, parent, false))
+		} else {
+			return ListViewHolder(ListItemMenuBinding.inflate(inflater, parent, false))
+		}
+	}
+
+	override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+		val data = differ.currentList[position]
+		when (holder) {
+			is GridViewHolder -> holder.bind(data)
+			is ListViewHolder -> holder.bind(data)
+		}
+
 		holder.itemView.setOnClickListener {
-			onItemClick?.invoke(currentItem)
+			onItemClick.onClickItem(data)
 		}
 
 	}
 
+	inner class GridViewHolder(private var binding: GridItemMenuBinding) :
+		RecyclerView.ViewHolder(binding.root) {
+		fun bind(data: DataListMenu) {
+			binding.apply {
+				titleMenu.text = data.nama
+				priceMenu.text = data.hargaFormat
+				Glide.with(this.imageMenu)
+					.load(data.imageUrl)
+					.fitCenter()
+					.into(binding.imageMenu)
+			}
+		}
+	}
+
+	inner class ListViewHolder(private var binding: ListItemMenuBinding) :
+		RecyclerView.ViewHolder(binding.root) {
+		fun bind(data: DataListMenu) {
+			binding.apply {
+				titleMenu.text = data.nama
+				priceMenu.text = data.hargaFormat
+				Glide.with(this.imageMenu)
+					.load(data.imageUrl)
+					.fitCenter()
+					.into(binding.imageMenu)
+			}
+		}
+	}
+
 	override fun getItemCount(): Int {
-		return listmenu.size
+		return differ.currentList.size
 	}
 
-	//Class holder
-	class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-		val name = itemView.findViewById<TextView>(R.id.title_menu)!!
-		val price = itemView.findViewById<TextView>(R.id.price_menu)!!
-		val image = itemView.findViewById<ImageView>(R.id.image_menu)!!
-
-	}
-
-	@SuppressLint("NotifyDataSetChanged")
-	fun reloadData(newData: ArrayList<ItemMenu>) {
-		listmenu.addAll(newData)
-		notifyDataSetChanged()
+	interface OnClickListener {
+		fun onClickItem(data: DataListMenu)
 	}
 }
